@@ -1,0 +1,28 @@
+<h1>Lugares</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Personas</th>
+      <th>Lugar</th>
+      <th>Dispositivos</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @venues.each do |venue| %>
+      <tr>
+        <td><%= venue.counter %></td>
+        <td><%= link_to "#{venue.name}", venue %></td>
+        <td><%= venue.devices.size %></td>
+        <td><%= link_to 'Editar', edit_venue_path(venue) %></td>
+        <td><%= link_to 'Borrar', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo lugar', new_venue_path %>

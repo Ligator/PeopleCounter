@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @venue.name %></h1>
+
+<p>
+  <strong>Personas:</strong>
+  <%= @venue.counter %>
+</p>
+
+<p>
+  <strong>Dispositivos:</strong>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Entraron</th>
+      <th>Salieron</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @venue.devices.each do |device| %>
+      <tr>
+        <td><%= link_to "#{device.name}", venue_device_path(device.venue, device) %></td>
+        <td><%= device.description %></td>
+        <td><%= device.enter %></td>
+        <td><%= device.leave %></td>
+        <td><%= link_to 'Editar', edit_venue_device_path(device.venue, device) %></td>
+        <td><%= link_to 'Borrar', venue_device_path(@venue, device), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Nuevo dispositivo', new_venue_device_path(@venue) %>
+<br>
+
+<p>
+<%= link_to 'Editar', edit_venue_path(@venue) %> |
+<%= link_to 'Lugares', venues_path %>
+</p>

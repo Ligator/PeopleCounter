@@ -1,0 +1,27 @@
+<h1><%= @devices.size %> Dispositivos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lugar</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Entraron</th>
+      <th>Salieron</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @devices.each do |device| %>
+      <tr>
+        <td><%= device.venue.name %></td>
+        <td><%= device.name %></td>
+        <td><%= device.description %></td>
+        <td><%= device.enter %></td>
+        <td><%= device.leave %></td>
+        <td><%= link_to 'Destroy', venue_device_path(device.venue, device), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

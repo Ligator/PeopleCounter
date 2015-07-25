@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @device.venue_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @device.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @device.description %>
+</p>
+
+<%= link_to 'Edit', edit_venue_device_path(@device.venue, @device) %> |
+<%= link_to 'Back', @device.venue %>
