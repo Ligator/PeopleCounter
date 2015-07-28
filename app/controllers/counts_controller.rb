@@ -1,13 +1,23 @@
 class CountsController < ApplicationController
-	before_filter :ensure_params
+	before_filter :ensure_params, only: [ :decrement, :increment ]
   def increment
   	@device.enter += params[:count].to_i
   	responsejson
   end
 
   def decrement
-  	@device.leave += params[:count].to_i
-  	responsejson
+    @device.leave += params[:count].to_i
+    responsejson
+  end
+
+  def appinventorvenues
+    @venues = Venue.all
+    @venuesjson = @venues.map do |venue|
+      venue.name
+    end
+    respond_to do |format|
+      format.json { render :appinventorvenues, status: :success }
+    end
   end
 
   def responsejson

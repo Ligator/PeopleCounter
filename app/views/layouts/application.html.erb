@@ -5,10 +5,35 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/3-col-portfolio.css" rel="stylesheet">  
 </head>
 <body>
 
-<%= yield %>
+	<div class="container">
+
+		<!-- Page Heading -->
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header"> Contador de Personas 
+					<small>Reto FLEXTRONICS y #CPMX6</small>
+				</h1>
+			</div>
+		</div>
+		<%= yield %>
+
+<hr>
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>2015</p>
+                </div>
+            </div>
+        </footer>
+	</div>
 
 </body>
 </html>

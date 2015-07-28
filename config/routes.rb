@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'counts/increment'
-
   get 'counts/decrement'
+  get 'counts/appinventorvenues'
 
   # get 'devices/index'
 

@@ -22,7 +22,8 @@ class DevicesController < ApplicationController
 
     respond_to do |format|
       if @device.save
-        format.html { redirect_to venue_device_path(@device.venue, @device), notice: 'device was successfully created.' }
+        format.html { redirect_to venues_url, notice: 'device was successfully created.' }
+        # format.html { redirect_to venue_device_path(@device.venue, @device), notice: 'device was successfully created.' }
         format.json { render :show, status: :created, location: venue_device_path(@device.venue, @device) }
       else
         format.html { render :new }
@@ -37,8 +38,9 @@ class DevicesController < ApplicationController
     @device = Device.find(params[:id])
     respond_to do |format|
       if @device.update(device_params)
-        format.html { redirect_to venue_device_path(@device.venue, @device), notice: 'device was successfully updated.' }
-        format.json { render :show, status: :ok, location: venue_device_path(@device.venue, @device) }
+        format.html { redirect_to venues_url, notice: 'device was successfully updated.' }
+        # format.html { redirect_to venue_device_path(@device.venue, @device), notice: 'device was successfully updated.' }
+        format.json { render :show, status: :ok, location: venues_url }
       else
         format.html { render :edit }
         format.json { render json: @device.errors, status: :unprocessable_entity }
@@ -53,7 +55,8 @@ class DevicesController < ApplicationController
     @venue = @device.venue
     @device.destroy
     respond_to do |format|
-      format.html { redirect_to @venue, notice: 'device was successfully destroyed.' }
+      format.html { redirect_to venues_url, notice: 'device was successfully destroyed.' }
+      # format.html { redirect_to @venue, notice: 'device was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

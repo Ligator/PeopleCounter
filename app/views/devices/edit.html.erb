@@ -1,6 +1,35 @@
-<h1>Editing device</h1>
+<h2>Editar acceso</h2>
 
-<%= render 'form' %>
+<%= form_for [@device.venue, @device], url: venue_device_path(@device.venue, @device) do |f| %>
 
-<%= link_to 'Show', venue_device_path(@device.venue, @device) %> |
-<%= link_to 'Back', @device.venue %>
+  <% if @device.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:</h2>
+
+      <ul>
+      <% @device.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :venue_id, :value => params[:venue_id]%>
+  </div>
+  <div class="field">
+    <%= f.label "Nombre" %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Actualizar" %>
+  </div>
+
+<% end %>
+
+<%#= link_to 'Show', venue_device_path(@device.venue, @device) %> 
+<%= link_to 'Atrás', venues_path %>
