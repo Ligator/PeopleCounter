@@ -22,8 +22,12 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label "Personas que entraron" %><br>
+    <%= f.text_field :enter %>
+  </div>
+  <div class="field">
+    <%= f.label "Personas que salieron" %><br>
+    <%= f.text_field :leave %>
   </div>
   <div class="actions">
     <%= f.submit "Actualizar" %>
