@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Contadorflextronics</title>
+  <title>Contador de personas</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,13 +24,33 @@
 				</h1>
 			</div>
 		</div>
+
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        </div>
+      <% end %>
+    <% end %>
+
 		<%= yield %>
 
-<hr>
+    <hr>
         <footer>
             <div class="row">
-                <div class="col-lg-12">
-                    <p>2015</p>
+                <div class="col-lg-12" style="text-align:center;">
+                    <p>
+                      <%= link_to "Documentación de la API", action: :apidoc, controller: :static_pages  %> &nbsp;&nbsp;&nbsp;
+                      <%= link_to "<i class='fa fa-github fa-2x'></i>".html_safe, "https://github.com/Ligator/PeopleCounter" %> &nbsp;&nbsp;&nbsp;
+                      Julio-Agosto 2015 
+                      <div style="text-align:right;"> 
+                        Compatible: 
+                        <i class="fa fa-apple fa-lg"></i> 
+                        <i class="fa fa-linux fa-lg"></i> 
+                        <i class="fa fa-windows fa-lg"></i>
+                      </div>
+                    </p>
                 </div>
             </div>
         </footer>

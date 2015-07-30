@@ -1,0 +1,5 @@
+<div class="row" style="text-align:right;">
+  <%= link_to 'Home', venues_path %>
+</div>
+
+<%= GitHub::Markdown.render_gfm(File.read("#{Rails.root}/public/api-doc.md")).html_safe %>

@@ -40,6 +40,7 @@ GEM
     execjs (2.5.2)
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
+    github-markdown (0.6.8)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.3.1)
@@ -123,6 +124,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   font-awesome-rails
+  github-markdown (~> 0.6.8)
   jbuilder (~> 2.0)
   jquery-rails
   pg

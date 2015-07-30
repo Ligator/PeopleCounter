@@ -4,7 +4,7 @@ class VenuesController < ApplicationController
   # GET /venues
   # GET /venues.json
   def index
-    @venues = Venue.all
+    @venues = Venue.all.order("counter DESC")
   end
 
   # GET /venues/1
@@ -28,7 +28,7 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       if @venue.save
-        format.html { redirect_to venues_url, notice: 'Venue was successfully created.' }
+        format.html { redirect_to venues_url, notice: "Se ha creado el lugar '#{@venue.name}'." }
         format.json { render :show, status: :created, location: @venue }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class VenuesController < ApplicationController
   def update
     respond_to do |format|
       if @venue.update(venue_params)
-        format.html { redirect_to venues_url, notice: 'Venue was successfully updated.' }
+        format.html { redirect_to venues_url, notice: "Se ha actualizado el lugar '#{@venue.name}'." }
         format.json { render :show, status: :ok, location: @venue }
       else
         format.html { render :edit }
@@ -54,9 +54,10 @@ class VenuesController < ApplicationController
   # DELETE /venues/1
   # DELETE /venues/1.json
   def destroy
+    name = @venue.name
     @venue.destroy
     respond_to do |format|
-      format.html { redirect_to venues_url, notice: 'Venue was successfully destroyed.' }
+      format.html { redirect_to venues_url, notice: "El lugar '#{name}' y todos sus accesos fueron eliminados." }
       format.json { head :no_content }
     end
   end

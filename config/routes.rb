@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  get 'counts/increment'
-  get 'counts/decrement'
-  get 'counts/appinventorvenues'
+  get 'static_pages/apidoc'
+
+  get 'static_pages/challenge'
+
+  # get 'counts/increment'
+  # get 'counts/decrement'
+  get 'counts/door/:id' => 'counts#door'
 
   # get 'devices/index'
 

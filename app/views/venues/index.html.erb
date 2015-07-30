@@ -8,35 +8,36 @@
     <div class="col-md-4 portfolio-item" style="background-color:white; ">
       <div class="counter-number" style="font-size: 50px; text-align:center;"><%= venue.counter.to_s %></div>
       <h3><%= venue.name.to_s %></h3>
-        <%#= venue.devices.size %>
         <small>
-        <%= link_to 'Editar', edit_venue_path(venue) %> | 
-        <%= link_to 'Borrar', venue, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Editar', edit_venue_path(venue) %> | 
+          <%= link_to 'Borrar', venue, method: :delete, data: { confirm: 'Esta acción no se puede deshacer. ¿Está seguro de querer borrar el lugar con todos sus accesos?' } %>
         </small>
       <p>
-
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Acceso</th>
-            <th>Ent</th>
-            <th>Sal</th>
-            <th style="text-align:center; width: 55px;"><%= link_to '<i class="fa fa-plus-circle"></i>'.html_safe, new_venue_device_path(venue) %></th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <% venue.devices.each do |device| %>
+        <table class="table table-bordered">
+          <thead>
             <tr>
-              <td><%= link_to "#{device.name}", venue_device_path(device.venue, device) %></td>
-              <td><%= device.enter %></td>
-              <td><%= device.leave %></td>
-              <td><%= link_to "<i class='fa fa-pencil fa-fw'></i>".html_safe , edit_venue_device_path(device.venue, device) %>
-              <%= link_to "<i class='fa fa-trash-o fa-fw'></i>".html_safe, venue_device_path(venue, device), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <th>Acceso</th>
+              <th>Ent</th>
+              <th>Sal</th>
+              <th style="text-align:center; width: 55px;"><%= link_to '<i class="fa fa-plus-circle"></i>'.html_safe, new_venue_device_path(venue) %></th>
+
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% venue.devices.each do |device| %>
+              <tr>
+                <td>
+                  <%#= link_to "#{device.name}", venue_device_path(device.venue, device) %>
+                  <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="ID: <%= device.id %>"><%= device.name %></a>
+                </td>
+                <td><%= device.enter %></td>
+                <td><%= device.leave %></td>
+                <td><%= link_to "<i class='fa fa-pencil fa-fw'></i>".html_safe , edit_venue_device_path(device.venue, device) %>
+                <%= link_to "<i class='fa fa-trash-o fa-fw'></i>".html_safe, venue_device_path(venue, device), method: :delete, data: { confirm: 'Esta acción no se puede deshacer. ¿Está seguro de querer borrar el acceso?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </p>
     </div>
 
@@ -50,3 +51,8 @@
 
 <br>
 
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
