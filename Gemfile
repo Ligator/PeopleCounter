@@ -31,7 +31,7 @@ gem 'github-markdown', '~> 0.6.8'
 
 # Graphics
 gem "chartkick"
-gem 'groupdate', '2.4.0'
+# gem 'groupdate', '2.4.0'
 # gem 'groupdate', '1.0.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
