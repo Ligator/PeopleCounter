@@ -11,20 +11,21 @@
 
         <% @json = {} %>
         <% @alltherest = {} %>
+        <% chart_time_lapse = 12.hours.ago %>
         <% venue.histories.each do |item| %>
-          <% if item.created_at >= 1.days.ago %>
+          <% if item.created_at >= chart_time_lapse %>
             <% @json[item.created_at] = item.counter %>
           <% else %>
             <% @alltherest[item.created_at] = item.counter %>
           <% end %>
         <% end %>
-        <% one_day_ago = 24.hours.ago %>
         <% value = @alltherest.select {|k,v| k == @alltherest.keys.max }.values[0] %>
-        <% @json[one_day_ago] = value if value %>
-        <% @json[one_day_ago] ||= @json.select {|k,v| k == @json.keys.min }.values[0]  %>
+        <% @json[chart_time_lapse] = value if value %>
+        <% @json[chart_time_lapse] ||= @json.select {|k,v| k == @json.keys.min }.values[0]  %>
         <% @json[Time.now] = venue.histories.last.counter if venue.histories.last %>
         <%#= @json %>
-      <%= line_chart @json, height: "100px", colors: ["darkorange"]  %>
+      <%#= line_chart @json, height: "100px", colors: ["darkorange"]  %>
+      <%= area_chart @json, height: "100px", colors: ["darkorange"]  %>
 
       <p>
         <table class="table table-bordered">
