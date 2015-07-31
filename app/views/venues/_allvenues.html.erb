@@ -18,7 +18,10 @@
             <% @alltherest[item.created_at] = item.counter %>
           <% end %>
         <% end %>
-        <% @json[24.hours.ago] = @alltherest.select {|k,v| v == @alltherest.values.max }.values[0]  %>
+        <% one_day_ago = 24.hours.ago %>
+        <% value = @alltherest.select {|k,v| k == @alltherest.keys.max }.values[0] %>
+        <% @json[one_day_ago] = value if value %>
+        <% @json[one_day_ago] ||= @json.select {|k,v| k == @json.keys.min }.values[0]  %>
         <% @json[Time.now] = venue.histories.last.counter if venue.histories.last %>
         <%#= @json %>
       <%= line_chart @json, height: "100px", colors: ["darkorange"]  %>
