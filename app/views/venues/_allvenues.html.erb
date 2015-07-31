@@ -1,9 +1,5 @@
-<div class="row" style="text-align:right;">
-  <%= link_to 'Nuevo lugar', new_venue_path, :class => "btn btn-sm btn-primary", :style => "color:white;" %>
-</div>
-
-</br>
 <div class="row">
+  <%# locals[:venues].each_with_index do |venue, index| %>
   <% @venues.each_with_index do |venue, index| %>
     <div class="col-md-4 portfolio-item" style="background-color:white; ">
       <div class="counter-number" style="font-size: 50px; text-align:center;"><%= venue.counter.to_s %></div>
@@ -12,6 +8,14 @@
           <%= link_to 'Editar', edit_venue_path(venue) %> | 
           <%= link_to 'Borrar', venue, method: :delete, data: { confirm: 'Esta acción no se puede deshacer. ¿Está seguro de querer borrar el lugar con todos sus accesos?' } %>
         </small>
+
+        <% @json = {} %>
+        <% venue.histories.each do |item| %>
+          <% @json[item.created_at] = item.counter %>
+        <% end %>
+        <% @json[Time.now] = venue.histories.last.counter %>
+        <%#= @json %>
+      <%= line_chart @json, height: "100px", colors: ["darkorange"]  %>
       <p>
         <table class="table table-bordered">
           <thead>
@@ -42,14 +46,13 @@
     </div>
 
     <% if (index+1)%3 == 0 %>
-</div></br></br>
-<div class="row">
+      </div></br></br>
+      <div class="row">
     <% end %>
 
   <% end %>
 </div>
 
-<br>
 
 <script type="text/javascript">
 $(document).ready(function(){

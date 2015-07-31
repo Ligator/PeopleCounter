@@ -8,5 +8,6 @@ class ApplicationController < ActionController::Base
 	doors = Device.where(venue_id: venue_id)
 	venue.counter = doors.map{|x| x.enter}.sum - doors.map{|x| x.leave}.sum
 	venue.save!
+	venue.histories.create!(counter: venue.counter)
   end
 end
