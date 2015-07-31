@@ -23,7 +23,7 @@ class DevicesController < ApplicationController
     respond_to do |format|
       if @device.save
         update_total_counter(@device.venue.id)
-        format.html { redirect_to venues_url, notice: 'device was successfully created.' }
+        format.html { redirect_to venues_url, notice: "Se ha creado el acceso '#{@device.name}'." }
         # format.html { redirect_to venue_device_path(@device.venue, @device), notice: 'device was successfully created.' }
         format.json { render :show, status: :created, location: venue_device_path(@device.venue, @device) }
       else
@@ -40,7 +40,7 @@ class DevicesController < ApplicationController
     respond_to do |format|
       if @device.update(device_params)
         update_total_counter(@device.venue.id)
-        format.html { redirect_to venues_url, notice: 'device was successfully updated.' }
+        format.html { redirect_to venues_url, notice: "Se ha actualizado el acceso '#{@device.name}'." }
         # format.html { redirect_to venue_device_path(@device.venue, @device), notice: 'device was successfully updated.' }
         format.json { render :show, status: :ok, location: venues_url }
       else
@@ -54,11 +54,12 @@ class DevicesController < ApplicationController
   # DELETE /devices/1.json
   def destroy
     @device = Device.find(params[:id])
+    name = @device.name
     @venue = @device.venue
     @device.destroy
     update_total_counter(@venue.id)
     respond_to do |format|
-      format.html { redirect_to venues_url, notice: 'device was successfully destroyed.' }
+      format.html { redirect_to venues_url, notice: "Se ha borrado el acceso '#{name}'." }
       # format.html { redirect_to @venue, notice: 'device was successfully destroyed.' }
       format.json { head :no_content }
     end
