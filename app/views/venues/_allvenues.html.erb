@@ -19,7 +19,7 @@
           <% end %>
         <% end %>
         <% @json[24.hours.ago] = @alltherest.select {|k,v| v == @alltherest.values.max }.values[0]  %>
-        <% @json[Time.now] = venue.histories.last.counter %>
+        <% @json[Time.now] = venue.histories.last.counter if venue.histories.last %>
         <%#= @json %>
       <%= line_chart @json, height: "100px", colors: ["darkorange"]  %>
 
