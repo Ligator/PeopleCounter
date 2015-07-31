@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'static_pages/apidoc'
-
   get 'static_pages/challenge'
 
   # get 'counts/increment'
@@ -19,6 +18,8 @@ Rails.application.routes.draw do
   resources :venues do
     resources :devices
   end
+  get 'allvenues', to: 'venues#allvenues'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

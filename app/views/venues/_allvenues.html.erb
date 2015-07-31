@@ -22,7 +22,8 @@
         <% value = @alltherest.select {|k,v| k == @alltherest.keys.max }.values[0] %>
         <% @json[chart_time_lapse] = value if value %>
         <% @json[chart_time_lapse] ||= @json.select {|k,v| k == @json.keys.min }.values[0]  %>
-        <% @json[Time.now] = venue.histories.last.counter if venue.histories.last %>
+        <% value = @json.select {|k,v| k == @json.keys.max }.values[0] %>
+        <% @json[Time.now] = value if value %>
         <%#= @json %>
       <%#= line_chart @json, height: "100px", colors: ["darkorange"]  %>
       <%= area_chart @json, height: "100px", colors: ["darkorange"]  %>

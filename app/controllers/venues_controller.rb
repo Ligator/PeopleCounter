@@ -5,11 +5,16 @@ class VenuesController < ApplicationController
   # GET /venues.json
   def index
     @venues = Venue.all.order("counter DESC")
-    p "************* #{@venues.map{|v| v.counter}} ************"
     respond_to do |format|
       format.html
       format.json
-      format.js { render partial: 'allvenues' }
+    end
+  end
+
+  def allvenues
+    @venues = Venue.all.order("counter DESC")
+    respond_to do |format|
+      format.html { render partial: 'allvenues' }
     end
   end
 

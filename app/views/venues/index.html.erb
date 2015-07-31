@@ -1,34 +1,24 @@
 <div class="row" style="text-align:right;">
   <%= link_to 'Nuevo lugar', new_venue_path, :class => "btn btn-sm btn-primary", :style => "color:white;" %>
 </div>
-
 </br>
 
 <div id="allvenuesdata">
-  <%#= render "allvenues", venues: @venues %>
-  <%= render partial: "allvenues", locals: {venues: @venues} %>
+  <%= render "allvenues" %>
 </div>
-
-
-<!-- <div id="counternumber" >0</div> -->
-<br>
 
 <script type="text/javascript">
 $(document).ready(function(){
-  var cont = 0;
-  setInterval(function(){ 
-    // $.ajax({
-    //   url: "/venues",
-    //   success: function(result) {
-    //     // $('#allvenuesdata').html(result);
-    //     // $('#allvenuesdata').html("<%= escape_javascript(render 'allvenues') %>");
-    //   },
-    //   dataType: 'JS'
-    // });
-    // $.get("/venues");
-    // $('#allvenuesdata').empty().append("<%= escape_javascript(render partial: 'allvenues', locals: {venues: @venues}) %>");
-    cont += 1;
-    $("#counternumber").text(cont);
-  }, 1000);
+  (function worker() {
+    $.ajax({
+      url: '/allvenues', 
+      success: function(data) {
+        $('#allvenuesdata').html(data);
+      },
+      complete: function() {
+        setTimeout(worker, 1000);
+      }
+    });
+  })();
 });
 </script>
