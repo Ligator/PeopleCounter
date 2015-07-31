@@ -10,12 +10,19 @@
         </small>
 
         <% @json = {} %>
+        <% @alltherest = {} %>
         <% venue.histories.each do |item| %>
-          <% @json[item.created_at] = item.counter %>
+          <% if item.created_at >= 1.days.ago %>
+            <% @json[item.created_at] = item.counter %>
+          <% else %>
+            <% @alltherest[item.created_at] = item.counter %>
+          <% end %>
         <% end %>
+        <% @json[24.hours.ago] = @alltherest.select {|k,v| v == @alltherest.values.max }.values[0]  %>
         <% @json[Time.now] = venue.histories.last.counter %>
         <%#= @json %>
       <%= line_chart @json, height: "100px", colors: ["darkorange"]  %>
+
       <p>
         <table class="table table-bordered">
           <thead>
