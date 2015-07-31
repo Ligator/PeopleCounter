@@ -7,7 +7,7 @@ Todas las llamadas son del tipo HTTP GET y devuelven datos en formato JSON.
 
 
 ### Dispositivos de monitoreo
-*Usado por dispositivos móviles y aplicaciones de escritorio.*
+*Orientado a dispositivos móviles (Android, iOS, Windows Phone, BlackBerry OS, etc.) y aplicaciones de escritorio (Windows, GNU/Linux, Mac OSX).*
 
 Son necesarias dos llamadas a la API, la primera es para saber qué lugares están registrados en la base de datos y la segunda es para saber los detalles del lugar, así como la lista de todos los accesos que tiene.
 
@@ -117,7 +117,7 @@ Dentro de **devices**:
  * **leave**: Cantidad de personas que han salido por esta puerta.
 
 ### Dispositivos de registro de personas.
-*Usado por microcontroladores y dispositivos similares (Arduino, Raspberry Pi, TI Launchpad, Intel Galileo, etc.).*
+*Orientado a microcontroladores y dispositivos similares (Arduino, Raspberry Pi, TI Launchpad, Intel Galileo, etc.).*
 
 Para registrar la entrada o salida de una persona, basta con hacer una sola llamada con el ID del acceso/puerta y la cantidad de personas que entraron y/o salieron.
 
