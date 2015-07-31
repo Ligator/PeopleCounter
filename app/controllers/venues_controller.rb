@@ -5,6 +5,12 @@ class VenuesController < ApplicationController
   # GET /venues.json
   def index
     @venues = Venue.all.order("counter DESC")
+    p "************* #{@venues.map{|v| v.counter}} ************"
+    respond_to do |format|
+      format.html
+      format.json
+      format.js { render partial: 'allvenues' }
+    end
   end
 
   # GET /venues/1
@@ -42,6 +48,7 @@ class VenuesController < ApplicationController
   def update
     respond_to do |format|
       if @venue.update(venue_params)
+        update_total_counter(@venue.id)
         format.html { redirect_to venues_url, notice: "Se ha actualizado el lugar '#{@venue.name}'." }
         format.json { render :show, status: :ok, location: @venue }
       else
