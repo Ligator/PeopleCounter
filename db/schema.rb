@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725095810) do
+ActiveRecord::Schema.define(version: 20150731070437) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "devices", force: true do |t|
     t.integer  "venue_id"
@@ -23,7 +26,16 @@ ActiveRecord::Schema.define(version: 20150725095810) do
     t.integer  "leave",       default: 0
   end
 
-  add_index "devices", ["venue_id"], name: "index_devices_on_venue_id"
+  add_index "devices", ["venue_id"], name: "index_devices_on_venue_id", using: :btree
+
+  create_table "histories", force: true do |t|
+    t.integer  "venue_id"
+    t.integer  "counter"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "histories", ["venue_id"], name: "index_histories_on_venue_id", using: :btree
 
   create_table "venues", force: true do |t|
     t.integer  "counter",    default: 0
