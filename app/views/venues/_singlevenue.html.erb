@@ -2,7 +2,7 @@
     <div class="col-md-5 portfolio-item" style="background-color:white; ">
       <div class="counter-number" style="font-size: 200px; text-align:center; margin-top: 2cm; margin-bottom: 2.6cm;"><%= @venue.counter.to_s %></div>
     </div>
-    <div class="col-md-5 portfolio-item" style="background-color:white; ">
+    <div class="col-md-6 portfolio-item" style="background-color:white; ">
       <h3><%= @venue.name.to_s %></h3>
         <small>
           <%= link_to 'Editar', edit_venue_path(@venue) %> | 
@@ -14,7 +14,7 @@
           <thead>
             <tr>
               <th>ID</th>
-              <th style="width: 100%;">Acceso</th>
+              <th style="width: 55%;">Acceso</th>
               <th>Entraron</th>
               <th>Salieron</th>
               <th style="text-align:center; width: 55px;"><%= link_to '<i class="fa fa-plus-circle"></i>'.html_safe, new_venue_device_path(@venue) %></th>
