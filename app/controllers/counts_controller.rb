@@ -13,7 +13,8 @@ class CountsController < ApplicationController
     respond_to do |format|
       if @door.save
         update_total_counter(@door.venue.id)
-        format.json { render json: {message: "Contador actualizado", venue: @door.venue, door: @door}, status: :created, location: venue_device_path(@door.venue, @door) }
+        venue = Venue.find(@door.venue.id)
+        format.json { render json: {message: "Contador actualizado", venue: venue, door: @door}, status: :created, location: venue_device_path(@door.venue, @door) }
       else
         format.json { render json: @door.errors, status: :unprocessable_entity }
       end

@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-5 portfolio-item" style="background-color:white; ">
+      <div class="counter-number" style="font-size: 200px; text-align:center; margin-top: 2cm; margin-bottom: 2.6cm;"><%= @venue.counter.to_s %></div>
+    </div>
+    <div class="col-md-5 portfolio-item" style="background-color:white; ">
+      <h3><%= @venue.name.to_s %></h3>
+        <small>
+          <%= link_to 'Editar', edit_venue_path(@venue) %> | 
+          <%= link_to 'Borrar', @venue, method: :delete, data: { confirm: 'Esta acción no se puede deshacer. ¿Está seguro de querer borrar el lugar con todos sus accesos?' } %>
+        </small>
+
+      <p style="text-align:center;">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th style="width: 100%;">Acceso</th>
+              <th>Entraron</th>
+              <th>Salieron</th>
+              <th style="text-align:center; width: 55px;"><%= link_to '<i class="fa fa-plus-circle"></i>'.html_safe, new_venue_device_path(@venue) %></th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <% @venue.devices.each do |device| %>
+              <tr>
+                <td><%= device.id %></td>
+                <td><%= device.name %></td>
+                <td><%= device.enter %></td>
+                <td><%= device.leave %></td>
+                <td><%= link_to "<i class='fa fa-pencil fa-fw'></i>".html_safe , edit_venue_device_path(device.venue, device) %>
+                <%= link_to "<i class='fa fa-trash-o fa-fw'></i>".html_safe, venue_device_path(@venue, device), method: :delete, data: { confirm: 'Esta acción no se puede deshacer. ¿Está seguro de querer borrar el acceso?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= "Crea un acceso con <i class='fa fa-plus-circle'></i> para empezar a registrar entradas y salidas de personas.".html_safe if @venue.histories.blank? %>
+      </p>
+
+    </div>
+
+</div>
+<div class="row">
+
+        <% @json = {} %>
+        <% @venue.histories.each do |item| %>
+            <% @json[item.created_at] = item.counter %>
+        <% end %>
+        <% value = @json.select {|k,v| k == @json.keys.max }.values[0] %>
+        <% @json[Time.now] = value if value %>
+      <%= area_chart @json, height: "200px", colors: ["darkorange"] unless @json.blank? %>
+
+</div>
+
+<%= link_to 'Atrás', venues_path %>
+

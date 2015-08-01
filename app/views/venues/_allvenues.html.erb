@@ -2,9 +2,10 @@
   <%# locals[:venues].each_with_index do |venue, index| %>
   <% @venues.each_with_index do |venue, index| %>
     <div class="col-md-4 portfolio-item" style="background-color:white; ">
-      <div class="counter-number" style="font-size: 50px; text-align:center;"><%= venue.counter.to_s %></div>
+      <div class="counter-number" style="font-size: 50px; text-align:center; margin-top: 0.5cm;"><%= venue.counter.to_s %></div>
       <h3><%= venue.name.to_s %></h3>
         <small>
+          <%= link_to 'Mostrar', venue_path(venue) %> | 
           <%= link_to 'Editar', edit_venue_path(venue) %> | 
           <%= link_to 'Borrar', venue, method: :delete, data: { confirm: 'Esta acción no se puede deshacer. ¿Está seguro de querer borrar el lugar con todos sus accesos?' } %>
         </small>
@@ -64,7 +65,6 @@
 
   <% end %>
 </div>
-
 
 <script type="text/javascript">
 $(document).ready(function(){

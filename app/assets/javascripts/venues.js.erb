@@ -1,0 +1,29 @@
+$(document).ready(function(){
+
+	$('[data-toggle="tooltip"]').tooltip();
+
+	(function worker() {
+		$.ajax({
+			url: '/allvenues', 
+			success: function(data) {
+				$('#allvenuesdata').html(data);
+			},
+			complete: function() {
+				setTimeout(worker, 1000);
+			}
+		});
+	})();
+
+	(function worker2() {
+		$.ajax({
+			url: "/singlevenue/" + $.trim($("#venueID").text()), 
+			success: function(data) {
+				$('#singlevenue').html(data);
+			},
+			complete: function() {
+				setTimeout(worker2, 1000);
+			}
+		});
+	})();
+
+});

@@ -9,5 +9,6 @@ class ApplicationController < ActionController::Base
 	venue.counter = doors.map{|x| x.enter}.sum - doors.map{|x| x.leave}.sum
 	venue.save!
 	venue.histories.create!(counter: venue.counter)
+	venue
   end
 end

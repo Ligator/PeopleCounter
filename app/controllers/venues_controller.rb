@@ -1,5 +1,5 @@
 class VenuesController < ApplicationController
-  before_action :set_venue, only: [:show, :edit, :update, :destroy]
+  before_action :set_venue, only: [:show, :edit, :update, :destroy, :singlevenue]
 
   # GET /venues
   # GET /venues.json
@@ -18,9 +18,20 @@ class VenuesController < ApplicationController
     end
   end
 
+  def singlevenue
+    respond_to do |format|
+      if @error
+        format.html { render :nothing => true }
+      else
+        format.html { render partial: 'singlevenue' }
+      end
+    end
+  end
+
   # GET /venues/1
   # GET /venues/1.json
   def show
+    redirect_to "/" and return if @error
   end
 
   # GET /venues/new
@@ -30,6 +41,7 @@ class VenuesController < ApplicationController
 
   # GET /venues/1/edit
   def edit
+    redirect_to "/" and return if @error
   end
 
   # POST /venues
@@ -78,6 +90,9 @@ class VenuesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_venue
       @venue = Venue.find(params[:id])
+      @error = false
+    rescue
+      @error = true
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

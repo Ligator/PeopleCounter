@@ -1,24 +1,4 @@
-<div class="row" style="text-align:right;">
-  <%= link_to 'Nuevo lugar', new_venue_path, :class => "btn btn-sm btn-primary", :style => "color:white;" %>
-</div>
-</br>
 
 <div id="allvenuesdata">
   <%= render "allvenues" %>
 </div>
-
-<script type="text/javascript">
-$(document).ready(function(){
-  (function worker() {
-    $.ajax({
-      url: '/allvenues', 
-      success: function(data) {
-        $('#allvenuesdata').html(data);
-      },
-      complete: function() {
-        setTimeout(worker, 1000);
-      }
-    });
-  })();
-});
-</script>
