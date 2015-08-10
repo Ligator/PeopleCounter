@@ -43,6 +43,8 @@ gem "chartkick"
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'thin', '1.2.6'
+
 group :development do
 	gem 'spring'
 	# gem 'sqlite3'
@@ -54,5 +56,6 @@ end
 group :production do
 	gem 'pg'
 	gem 'rails_12factor'
-	gem 'puma'
+	# gem 'puma'
+
 end
