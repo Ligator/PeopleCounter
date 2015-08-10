@@ -47,3 +47,11 @@ development:
   pool: 5
   username: abelpacheco
   password: 
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: flexdb
+  pool: 5
+  username: abelpacheco
+  password: 

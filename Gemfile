@@ -43,7 +43,7 @@ gem "chartkick"
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'thin', '1.2.6'
+gem 'thin', '1.6.3'
 
 group :development do
 	gem 'spring'
