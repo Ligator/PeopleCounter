@@ -2,6 +2,9 @@ class StaticPagesController < ApplicationController
   def apidoc
   end
 
-  def challenge
+  def connectdevices
+  end
+
+  def downloads
   end
 end

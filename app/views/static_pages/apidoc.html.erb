@@ -1,5 +1,20 @@
-<div class="row" style="text-align:right;">
-  <%= link_to 'Home', venues_path %>
-</div>
+<h1>
+Documentación de la API 
+</h1>
+
+La API sirve para comunicar los dispositivos con la plataforma WEB y puede ser consumida de igual forma por cualquier dispositivo.
+Todas las llamadas son del tipo HTTP GET y devuelven datos en formato JSON.
+
+<br><br><br><br>
+		<%= image_tag("logo_windows.png", size: "35x40", alt: "Windows") %>
+		<%= image_tag("logo_apple.png", size: "35x40", alt: "MAC OS X") %>
+		<%= image_tag("logo_linux.png", size: "35x40", alt: "GNU/Linux") %>
+		<%= image_tag("logo_ios.png", size: "40", alt: "iOS") %>
+		<%= image_tag("logo_android.png", size: "35x40", alt: "Android") %>
 
 <%= GitHub::Markdown.render_gfm(File.read("#{Rails.root}/public/api-doc.md")).html_safe %>
+
+<br><br><br>
+		<%= image_tag("logo_arduino.png", size: "65x60", alt: "Arduino") %>
+
+<%= GitHub::Markdown.render_gfm(File.read("#{Rails.root}/public/api-doc-sensores.md")).html_safe %>

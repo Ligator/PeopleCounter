@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'static_pages/apidoc'
-  get 'static_pages/challenge'
+  get 'apidoc', to: 'static_pages#apidoc'
+  get 'connectdevices', to: 'static_pages#connectdevices'
+  get 'downloads', to: 'static_pages#downloads'
 
   # get 'counts/increment'
   # get 'counts/decrement'

@@ -1,0 +1,50 @@
+<br>
+<br>
+<div class="row" style="text-align:center;">
+    <div class="col-md-4 portfolio-item" style="background-color:white; ">
+		<%= image_tag("logo_windows.png", size: "70x80", alt: "Windows") %>
+		<%= link_to 'Código fuente', "https://github.com/Ligator/PeopleCounter-for-Desktop", target: "_blank" %> | 
+		<%= link_to 'Ejecutable', "https://github.com/Ligator/PeopleCounter-for-Desktop/blob/master/dist_windows/PeopleCounter.exe?raw=true" %>
+		<br><br>
+	</div>
+    <div class="col-md-4 portfolio-item" style="background-color:white; ">
+		<%= image_tag("logo_apple.png", size: "70x80", alt: "MAC OS X") %>
+		<%= link_to 'Código fuente', "https://github.com/Ligator/PeopleCounter-for-Desktop", target: "_blank" %> | 
+		<%= link_to 'Ejecutable', "https://github.com/Ligator/PeopleCounter-for-Desktop/blob/master/dist_macosx/PeopleCounter.zip?raw=true" %>
+		<br><br>
+	</div>
+    <div class="col-md-4 portfolio-item" style="background-color:white; ">
+		<%= image_tag("logo_linux.png", size: "70x80", alt: "GNU/Linux") %>
+		<%= link_to 'Código fuente', "https://github.com/Ligator/PeopleCounter-for-Desktop", target: "_blank" %> | 
+		<%= link_to 'Ejecutable', "https://github.com/Ligator/PeopleCounter-for-Desktop/blob/master/dist_gnulinux/PeopleCounter?raw=true" %>
+		<br><br>
+	</div>
+</div>
+<div class="row" style="text-align:center;">
+    <div class="col-md-6 portfolio-item" style="background-color:white; ">
+		<%= image_tag("logo_ios.png", size: "80", alt: "iOS") %>
+		<%= link_to 'Código fuente', "https://github.com/Ligator/PeopleCounter-for-iOS", target: "_blank" %> | 
+		<%= link_to 'Aplicación', "http://install.diawi.com/xFZv3b", target: "_blank" %>
+		<br><br>
+	</div>
+    <div class="col-md-6 portfolio-item" style="background-color:white; ">
+		<%= image_tag("logo_android.png", size: "70x80", alt: "Android") %>
+		<%= link_to 'Código fuente', "https://github.com/Ligator/PeopleCounter-for-Android", target: "_blank" %> | 
+		<%= link_to 'Aplicación', "https://github.com/Ligator/PeopleCounter-for-Android/blob/master/application/HTTP_GET.apk?raw=true" %>
+		<br><br>
+	</div>
+</div>
+<div class="row" style="text-align:center;">
+    <div class="col-md-12 portfolio-item" style="background-color:white; ">
+		<%= image_tag("logo_cloud.png", size: "90", alt: "Cloud") %>
+		<%= link_to 'Código fuente', "https://github.com/Ligator/PeopleCounter", target: "_blank" %>
+		<br><br>
+	</div>
+</div>
+
+<%= GitHub::Markdown.render_gfm(File.read("#{Rails.root}/public/apps-title.md")).html_safe %>
+
+Si deseas escribir tu propio programa o aplicación que se comunique con esta página, aquí está la documentación necesaria:
+
+<%= GitHub::Markdown.render_gfm(File.read("#{Rails.root}/public/api-doc.md")).html_safe %>
+
