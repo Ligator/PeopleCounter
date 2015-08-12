@@ -2,6 +2,9 @@ $(document).ready(function(){
 
 	$('[data-toggle="tooltip"]').tooltip();
 
+	var worker_timer;
+	var worker2_timer;
+
 	(function worker() {
 		$.ajax({
 			url: '/allvenues', 
@@ -9,7 +12,8 @@ $(document).ready(function(){
 				$('#allvenuesdata').html(data);
 			},
 			complete: function() {
-				setTimeout(worker, 1000);
+				clearTimeout(worker_timer)
+				worker_timer = setTimeout(worker, 1000);
 			}
 		});
 	})();
@@ -21,7 +25,8 @@ $(document).ready(function(){
 				$('#singlevenue').html(data);
 			},
 			complete: function() {
-				setTimeout(worker2, 1000);
+				clearTimeout(worker2_timer)
+				worker2_timer = setTimeout(worker2, 1000);
 			}
 		});
 	})();
