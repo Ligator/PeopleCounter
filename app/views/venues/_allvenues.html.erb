@@ -27,7 +27,7 @@
         <% @json[Time.now] = value if value %>
         <%#= @json %>
       <%#= line_chart @json, height: "100px", colors: ["darkorange"]  %>
-      <%#= area_chart @json, height: "100px", colors: ["darkorange"]  %>
+      <%= area_chart @json, height: "100px", colors: ["darkorange"]  %>
 
       <p>
         <table class="table table-bordered">

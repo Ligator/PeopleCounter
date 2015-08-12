@@ -43,16 +43,19 @@ gem "chartkick"
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'pg'
 gem 'thin', '1.6.3'
 
 group :development do
 	gem 'spring'
 	# gem 'sqlite3'
-  	gem "awesome_print"
+	gem 'pg'
+	# gem 'mysql2'                           # we're using ClearDB MySQL add-on on Heroku
+  	gem "awesome_print"     # Pretty print your Ruby objects with style -- in full color and with proper indentation
 end
 
 group :production do
+	gem 'pg'
 	gem 'rails_12factor'
 	# gem 'puma'
+
 end
