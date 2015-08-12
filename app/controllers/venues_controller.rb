@@ -51,7 +51,7 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       if @venue.save
-        format.html { redirect_to venues_url, notice: "Se ha creado el lugar '#{@venue.name}'." }
+        format.html { redirect_to @venue, notice: "Se ha creado el lugar '#{@venue.name}'." }
         format.json { render :show, status: :created, location: @venue }
       else
         format.html { render :new }
@@ -66,7 +66,7 @@ class VenuesController < ApplicationController
     respond_to do |format|
       if @venue.update(venue_params)
         update_total_counter(@venue.id)
-        format.html { redirect_to venues_url, notice: "Se ha actualizado el lugar '#{@venue.name}'." }
+        format.html { redirect_to @venue, notice: "Se ha actualizado el lugar '#{@venue.name}'." }
         format.json { render :show, status: :ok, location: @venue }
       else
         format.html { render :edit }
