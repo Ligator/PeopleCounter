@@ -46,15 +46,6 @@
 <!-- <div class="row"> -->
       <%#= area_chart @venue.histories_simple, height: "200px" unless @venue.histories_simple.blank? %>
 <!-- </div> -->
-<div class="row">
-        <% @json = {} %>
-        <% @venue.histories.each do |item| %>
-            <% @json[item.created_at] = item.counter %>
-        <% end %>
-        <% value = @json.select {|k,v| k == @json.keys.max }.values[0] %>
-        <% @json[Time.now] = value if value %>
-      <%= area_chart @json, height: "200px", colors: ["darkorange"] unless @json.blank? %>
-</div>
 
 <%= link_to 'Atrás', venues_path %>
 
