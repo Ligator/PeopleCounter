@@ -6,18 +6,18 @@ class VenuesController < ApplicationController
   def index
     @venues = Venue.all.order("created_at DESC")
     # @venues = Venue.all.order("counter DESC")
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.json
+    # end
   end
 
   def allvenues
     @venues = Venue.all.order("created_at DESC")
     # @venues = Venue.all.order("counter DESC")
-    respond_to do |format|
-      format.html { render partial: 'allvenues' }
-    end
+    # respond_to do |format|
+    #   format.html { render partial: 'allvenues' }
+    # end
   end
 
   def singlevenue
@@ -91,8 +91,12 @@ class VenuesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_venue
-      @venue = Venue.find(params[:id])
-      @error = false
+      if  params[:id] == 0
+        @error = true
+      else
+        @venue = Venue.find(params[:id])
+        @error = false
+      end
     rescue
       @error = true
     end

@@ -1,34 +1,34 @@
-$(document).ready(function(){
+// $(document).ready(function(){
 
-	$('[data-toggle="tooltip"]').tooltip();
+// 	$('[data-toggle="tooltip"]').tooltip();
 
-	var worker_timer;
-	var worker2_timer;
+// 	var worker_timer;
+// 	var worker2_timer;
 
-	(function worker() {
-		$.ajax({
-			url: '/allvenues', 
-			success: function(data) {
-				$('#allvenuesdata').html(data);
-			},
-			complete: function() {
-				clearTimeout(worker_timer)
-				worker_timer = setTimeout(worker, 1000);
-			}
-		});
-	})();
+// 	(function worker() {
+// 		$.ajax({
+// 			url: '/allvenues', 
+// 			success: function(data) {
+// 				$('#allvenuesdata').html(data);
+// 			},
+// 			complete: function() {
+// 				clearTimeout(worker_timer)
+// 				worker_timer = setTimeout(worker, 1000);
+// 			}
+// 		});
+// 	})();
 
-	(function worker2() {
-		$.ajax({
-			url: "/singlevenue/" + $.trim($("#venueID").text()), 
-			success: function(data) {
-				$('#singlevenue').html(data);
-			},
-			complete: function() {
-				clearTimeout(worker2_timer)
-				worker2_timer = setTimeout(worker2, 1000);
-			}
-		});
-	})();
+// 	(function worker2() {
+// 		$.ajax({
+// 			url: "/singlevenue/" + $.trim($("#venueID").text()), 
+// 			success: function(data) {
+// 				$('#singlevenue').html(data);
+// 			},
+// 			complete: function() {
+// 				clearTimeout(worker2_timer)
+// 				worker2_timer = setTimeout(worker2, 1000);
+// 			}
+// 		});
+// 	})();
 
-});
+// });

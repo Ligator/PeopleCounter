@@ -14,3 +14,22 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+$(function () {
+	setTimeout(updateComments, 1000);
+});
+
+function updateComments() {
+	if ($('#allvenuesdata').length > 0) {
+  		$.getScript('/venues.js');
+  		setTimeout(updateComments, 2000);
+	} else if ($('#singlevenue').length > 0) {
+  		$.getScript('/venues/' + $.trim($("#venueID").text()) + '.js');
+  		setTimeout(updateComments, 2000);
+	} else {
+		setTimeout(updateComments, 1000);
+	}
+	
+}
