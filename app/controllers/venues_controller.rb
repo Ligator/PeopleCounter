@@ -4,7 +4,8 @@ class VenuesController < ApplicationController
   # GET /venues
   # GET /venues.json
   def index
-    @venues = Venue.all.order("counter DESC")
+    @venues = Venue.all.order("created_at DESC")
+    # @venues = Venue.all.order("counter DESC")
     respond_to do |format|
       format.html
       format.json
@@ -12,7 +13,8 @@ class VenuesController < ApplicationController
   end
 
   def allvenues
-    @venues = Venue.all.order("counter DESC")
+    @venues = Venue.all.order("created_at DESC")
+    # @venues = Venue.all.order("counter DESC")
     respond_to do |format|
       format.html { render partial: 'allvenues' }
     end
