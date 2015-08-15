@@ -24,10 +24,10 @@ $(function () {
 function updateComments() {
 	if ($('#allvenuesdata').length > 0) {
   		$.getScript('/venues.js');
-  		setTimeout(updateComments, 2000);
+  		setTimeout(updateComments, 3000);
 	} else if ($('#singlevenue').length > 0) {
   		$.getScript('/venues/' + $.trim($("#venueID").text()) + '.js');
-  		setTimeout(updateComments, 2000);
+  		setTimeout(updateComments, 3000);
 	} else {
 		setTimeout(updateComments, 1000);
 	}
