@@ -10,25 +10,6 @@
           <%= link_to 'Borrar', venue, method: :delete, data: { confirm: 'Esta acción no se puede deshacer. ¿Está seguro de querer borrar el lugar con todos sus accesos?' } %>
         </small>
 
-        <% @json = {} %>
-        <% @alltherest = {} %>
-        <% chart_time_lapse = 12.hours.ago %>
-        <% venue.histories.each do |item| %>
-          <% if item.created_at >= chart_time_lapse %>
-            <% @json[item.created_at] = item.counter %>
-          <% else %>
-            <% @alltherest[item.created_at] = item.counter %>
-          <% end %>
-        <% end %>
-        <% value = @alltherest.select {|k,v| k == @alltherest.keys.max }.values[0] %>
-        <% @json[chart_time_lapse] = value if value %>
-        <% @json[chart_time_lapse] ||= @json.select {|k,v| k == @json.keys.min }.values[0]  %>
-        <% value = @json.select {|k,v| k == @json.keys.max }.values[0] %>
-        <% @json[Time.now] = value if value %>
-        <%#= @json %>
-      <%#= line_chart @json, height: "100px", colors: ["darkorange"]  %>
-      <%= area_chart @json, height: "100px", colors: ["darkorange"]  %>
-
       <p>
         <table class="table table-bordered">
           <thead>
