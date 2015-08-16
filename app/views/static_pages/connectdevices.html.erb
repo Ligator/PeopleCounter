@@ -1,13 +1,18 @@
 <div class="row" style="text-align:center;">
-    <div class="col-md-12 portfolio-item" style="background-color:white; ">
+    <div class="col-md-6 portfolio-item" style="background-color:white; ">
 		<%= image_tag("logo_arduino.png", size: "150x140", alt: "Arduino") %>
-		<%= link_to 'Código fuente', "https://github.com/Ligator/PeopleCounter-for-Arduino", target: "_blank" %>
+		<%= link_to 'Código fuente', "https://github.com/Ligator/PeopleCounter-Devices/tree/master/PeopleCounter%20for%20Arduino", target: "_blank" %>
+		<br><br>
+	</div>
+    <div class="col-md-6 portfolio-item" style="background-color:white; ">
+		<%= image_tag("logo-raspberrypi.png", size: "100x120", alt: "Raspberry Pi") %>
+		<%= link_to 'Código fuente', "https://github.com/Ligator/PeopleCounter-Devices/tree/master/PeopleCounter%20for%20RPi", target: "_blank" %>
 		<br><br>
 	</div>
 </div>
 
 <br><br>
-Si deseas conectartu propio dispositivo que se comunique con esta página, aquí está la documentación necesaria:
+Si deseas conectar tu propio dispositivo que se comunique con esta página, aquí está la documentación necesaria:
 
 <%= GitHub::Markdown.render_gfm(File.read("#{Rails.root}/public/api-doc-sensores.md")).html_safe %>
 
