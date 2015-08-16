@@ -7,4 +7,7 @@ class StaticPagesController < ApplicationController
 
   def downloads
   end
+
+  def challenge
+  end
 end
